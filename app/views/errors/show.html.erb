@@ -10,15 +10,22 @@
   <%= @error.description %>
 </p>
 
-<p>
-  <b>Solutions:</b>
+<table>
+  <tr>
+    <th>Solutions</th>
+    <th></th>
+    <th></th>
+  </tr>
   <% @error.solutions.each do |solution| %>
-    <ul>
-      <li><%= solution.description %></li>
-    </ul>
+    <tr>
+      <td><%= solution.description %></td>
+      <td><%= link_to 'Edit', "/errors/#{@error.id}/solutions/#{solution.id}/edit" %></td>
+      <td><%= link_to 'Destroy', "/errors/#{@error.id}/solutions/#{solution.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
   <% end %>
-</p>
+</table>
 
+<br />
 
 <%= link_to 'Add Solution', new_error_solution_path(@error)%> 
 <%= link_to 'Edit', edit_error_path(@error) %> |

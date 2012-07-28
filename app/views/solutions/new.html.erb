@@ -1,7 +1,32 @@
 <h1>New solution</h1>
 
+<%= @error.name%>
+<%= @error.description%>
 
 
-<%= render 'form' %>
+<%= form_for(@solution, :url => error_solutions_path(@error)) do |f| %>
+  <% if @solution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
 
-<%= link_to 'Back', solutions_path %>
+      <ul>
+      <% @solution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<!--<%#= render 'form' %>-->
+
+<%= link_to 'Back', error_path(@error) %>

@@ -35,13 +35,15 @@ class SolutionsController < ApplicationController
   # GET /solutions/1/edit
   def edit
     @solution = Solution.find(params[:id])
+    @error = Error.find_by_id(params[:error_id])
   end
 
   # POST /solutions
   # POST /solutions.json
   def create
     @solution = Solution.new(params[:solution])
-    @error = Error.find_by_id(params[:solution][:error_id])
+    @error = Error.find_by_id(params[:error_id])
+    @solution.error_id = @error.id
     respond_to do |format|
       if @solution.save
         format.html { redirect_to error_path(@error), notice: 'Solution was successfully created.' }
@@ -57,10 +59,10 @@ class SolutionsController < ApplicationController
   # PUT /solutions/1.json
   def update
     @solution = Solution.find(params[:id])
-
+    @error = Error.find_by_id(params[:error_id])
     respond_to do |format|
       if @solution.update_attributes(params[:solution])
-        format.html { redirect_to @solution, notice: 'Solution was successfully updated.' }
+        format.html { redirect_to error_path(@error), notice: 'Solution was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -74,9 +76,9 @@ class SolutionsController < ApplicationController
   def destroy
     @solution = Solution.find(params[:id])
     @solution.destroy
-
+    @error = Error.find_by_id(params[:error_id])
     respond_to do |format|
-      format.html { redirect_to solutions_url }
+      format.html { redirect_to error_path(@error) }
       format.json { head :no_content }
     end
   end

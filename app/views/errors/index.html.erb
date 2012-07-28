@@ -11,9 +11,8 @@
 
 <% @errors.each do |error| %>
   <tr>
-    <td><%= error.name %></td>
-    <td><%= error.description %></td>
-    <td><%= link_to 'Show', error %></td>
+    <td><%= link_to error.name, error %></td>
+    <td><%= simple_format(error.description) %></td>
     <td><%= link_to 'Edit', edit_error_path(error) %></td>
     <td><%= link_to 'Destroy', error, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
