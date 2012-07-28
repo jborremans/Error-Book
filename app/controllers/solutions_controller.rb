@@ -3,7 +3,7 @@ class SolutionsController < ApplicationController
   # GET /solutions.json
   def index
     @solutions = Solution.all
-
+    @error = Error.find_by_id(:error_id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @solutions }
@@ -41,10 +41,10 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(params[:solution])
-
+    @error = Error.find_by_id(params[:solution][:error_id])
     respond_to do |format|
       if @solution.save
-        format.html { redirect_to error_solutions_path, notice: 'Solution was successfully created.' }
+        format.html { redirect_to error_path(@error), notice: 'Solution was successfully created.' }
         format.json { render json: @solution, status: :created, location: @solution }
       else
         format.html { render action: "new" }

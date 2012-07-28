@@ -13,13 +13,12 @@
   <tr>
     <td><%= solution.description %></td>
     <td><%= solution.error_id %></td>
-    <td><%= link_to 'Show', solution %></td>
-    <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-    <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!--<td><%#= link_to 'Edit', edit_error_solution_path(@error) %></td>
+    <td><%#= link_to 'Destroy', error_solution_path(@error), method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Solution', new_solution_path %>
+<%= link_to 'New Solution', new_error_solution_path %>

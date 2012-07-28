@@ -11,9 +11,15 @@
 </p>
 
 <p>
-  <b>Solutions 
+  <b>Solutions:</b>
+  <% @error.solutions.each do |solution| %>
+    <ul>
+      <li><%= solution.description %></li>
+    </ul>
+  <% end %>
+</p>
 
 
-<%= link_to 'Add Solution', new_error_solution_path(@error)%>
+<%= link_to 'Add Solution', new_error_solution_path(@error)%> 
 <%= link_to 'Edit', edit_error_path(@error) %> |
 <%= link_to 'Back', errors_path %>
