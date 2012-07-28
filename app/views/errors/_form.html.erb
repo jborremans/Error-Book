@@ -29,6 +29,12 @@
     <%= f.label :"submit link to Github/Gist file" %><br />
     <%= f.text_field :url %>
   </div>
+  
+  <div class="field">
+    <%= f.label :"pick a topic category"%><br />
+    <%= f.collection_select :topic_id, @topics, :id, :name %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -25,7 +25,7 @@ class ErrorsController < ApplicationController
   # GET /errors/new.json
   def new
     @error = Error.new
-
+    @topics = Topic.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @error }
@@ -35,6 +35,7 @@ class ErrorsController < ApplicationController
   # GET /errors/1/edit
   def edit
     @error = Error.find_by_id(params[:id])
+    @topics = Topic.all
   end
 
   # POST /errors

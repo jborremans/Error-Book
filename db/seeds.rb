@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Topic.destroy_all
+
+
+topic = Topic.create(:name => "Routing Error")
+topic = Topic.create(:name => "Name Error")
+topic = Topic.create(:name => "NoMethodError Error")
+topic = Topic.create(:name => "View Template Error")
+topic = Topic.create(:name => "Misc")
