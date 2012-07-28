@@ -1,8 +1,9 @@
 Errorbook::Application.routes.draw do
 
+  root :to => "errors#index"
+
   resources :errors do
     resources :solutions
   end
 
-  put "/errors/:error_id/solutions/" => "solutions#update"
 end
