@@ -1,8 +1,11 @@
 <h1>New solution</h1>
 
-<p><%= @error.name%></p>
-<p><%= @error.explanation %></p>
-<p><%= simple_format(@error.description) %></p>
+<p><%= "Title: #{@error.name}"%></p>
+<p><%= "Explanation: #{@error.explanation}" %></p>
+<p>
+  <u>Description:</u>
+  <%= simple_format(@error.description) %>
+</p>
 
 
 <%= form_for(@solution, :url => error_solutions_path(@error)) do |f| %>
@@ -19,7 +22,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :solution %><br />
     <%= f.text_area :description %>
   </div>
   <div class="actions">
