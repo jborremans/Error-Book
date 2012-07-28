@@ -1,6 +1,9 @@
-<p><%= "Hello, #{User.last.name}" %></p>
 
-<h1>Listing topics</h1>
+<div class ="row">
+  <div class ="seven columns centered">
+<h4><%= "Hello, #{User.last.name}" %></h4>
+
+<h2>Listing topics</h2>
 
 
 <table>
@@ -23,3 +26,5 @@
 <br />
 
 <%= link_to 'New Topic', new_topic_path %>
+  </div>
+</div>

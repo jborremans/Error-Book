@@ -1,47 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class = "row">
+  <div class = "seven columns centered">
+  <p id="notice"><%= notice %></p>
+    
+    
+    <p>
+      <b>Name:</b>
+      <%= @error.name %>
+    </p>
 
-<p>
-  <b>Name:</b>
-  <%= @error.name %>
-</p>
+    <p>
+      <b>Description:</b>
+      <%= simple_format(@error.description) %>
+    </p>
 
-<p>
-  <b>Description:</b>
-  <%= simple_format(@error.description) %>
-</p>
+    <p>
+      <b>Explanation:</b>
+      <%= @error.explanation %>
+    </p>
 
-<p>
-  <b>Explanation:</b>
-  <%= @error.explanation %>
-</p>
-
-<p>
-  <b>File:</b>
-  <% if @error.url %>
-    <%= link_to @error.url, @error.url %>
-  <% else %>
-    <i><%= "None provided" %></i>
-  <% end %>
-</p>
+    <p>
+      <b>File:</b>
+      <% if @error.url %>
+        <%= link_to @error.url, @error.url %>
+      <% else %>
+        <i><%= "None provided" %></i>
+      <% end %>
+    </p>
 
 
-<table>
-  <tr>
-    <th>Solutions</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @error.solutions.each do |solution| %>
-    <tr>
-      <td><%= solution.description %></td>
-      <td><%= link_to 'Edit', "/errors/#{@error.id}/solutions/#{solution.id}/edit" %></td>
-      <td><%= link_to 'Destroy', "/errors/#{@error.id}/solutions/#{solution.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
-
-<br />
-
-<%= link_to 'Add Solution', new_error_solution_path(@error)%> 
-<%= link_to 'Edit', edit_error_path(@error) %> |
-<%= link_to 'Back', errors_path %>
+    <table>
+      <tr>
+        <th>Solutions</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @error.solutions.each do |solution| %>
+        <tr>
+          <td><%= solution.description %></td>
+          <td><%= link_to 'Edit', "/errors/#{@error.id}/solutions/#{solution.id}/edit" %></td>
+          <td><%= link_to 'Destroy', "/errors/#{@error.id}/solutions/#{solution.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'Add Solution', new_error_solution_path(@error)%>
+    <br />
+    <br />
+    <br />
+    <br />
+  
+    <%= link_to 'Edit', edit_error_path(@error) %> |
+    <%= link_to 'Back', errors_path %>
+  </div>
+</div>

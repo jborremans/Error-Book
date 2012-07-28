@@ -1,36 +1,39 @@
-<h1>New solution</h1>
+<div class="row">
+  <div class="seven columns centered">
+    <h1>New solution</h1>
+    <p><%= "Title: #{@error.name}"%></p>
+    <p><%= "Explanation: #{@error.explanation}" %></p>
+    <p>
+      <u>Description:</u>
+      <%= simple_format(@error.description) %>
+    </p>
 
-<p><%= "Title: #{@error.name}"%></p>
-<p><%= "Explanation: #{@error.explanation}" %></p>
-<p>
-  <u>Description:</u>
-  <%= simple_format(@error.description) %>
-</p>
 
+    <%= form_for(@solution, :url => error_solutions_path(@error)) do |f| %>
+      <% if @solution.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
 
-<%= form_for(@solution, :url => error_solutions_path(@error)) do |f| %>
-  <% if @solution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
-
-      <ul>
-      <% @solution.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @solution.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :solution %><br />
-    <%= f.text_area :description %>
+      <div class="field">
+        <%= f.label :solution %><br />
+        <%= f.text_area :description %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+
+
+    <!--<%#= render 'form' %>-->
+
+    <%= link_to 'Back', error_path(@error) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
-<!--<%#= render 'form' %>-->
-
-<%= link_to 'Back', error_path(@error) %>
+</div>
