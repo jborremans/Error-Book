@@ -7,8 +7,23 @@
 
 <p>
   <b>Description:</b>
-  <%= @error.description %>
+  <%= simple_format(@error.description) %>
 </p>
+
+<p>
+  <b>Explanation:</b>
+  <%= @error.explanation %>
+</p>
+
+<p>
+  <b>File:</b>
+  <% if @error.url %>
+    <%= link_to @error.url, @error.url %>
+  <% else %>
+    <i><%= "None provided" %></i>
+  <% end %>
+</p>
+
 
 <table>
   <tr>

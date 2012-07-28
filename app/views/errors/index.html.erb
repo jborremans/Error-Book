@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
+    <th>Explanation</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @errors.each do |error| %>
   <tr>
     <td><%= link_to error.name, error %></td>
-    <td><%= simple_format(error.description) %></td>
+    <td><%= error.explanation %></td>
     <td><%= link_to 'Edit', edit_error_path(error) %></td>
     <td><%= link_to 'Destroy', error, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

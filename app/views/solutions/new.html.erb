@@ -1,7 +1,8 @@
 <h1>New solution</h1>
 
-<%= @error.name%>
-<%= @error.description%>
+<p><%= @error.name%></p>
+<p><%= @error.explanation %></p>
+<p><%= simple_format(@error.description) %></p>
 
 
 <%= form_for(@solution, :url => error_solutions_path(@error)) do |f| %>

@@ -34,7 +34,7 @@ class ErrorsController < ApplicationController
 
   # GET /errors/1/edit
   def edit
-    @error = Error.find(params[:id])
+    @error = Error.find_by_id(params[:id])
   end
 
   # POST /errors
