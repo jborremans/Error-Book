@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @solution.description %>
+</p>
+
+<p>
+  <b>Error:</b>
+  <%= @solution.error_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_solution_path(@solution) %> |
+<%= link_to 'Back', solutions_path %>

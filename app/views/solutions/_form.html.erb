@@ -1,0 +1,30 @@
+
+<%= @error.name%>
+<%= @error.description%>
+
+
+<%= form_for(@solution, :url => error_solutions_path(@error)) do |f| %>
+  <% if @solution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
+
+      <ul>
+      <% @solution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :error_id %><br />
+    <%= f.number_field :error_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
